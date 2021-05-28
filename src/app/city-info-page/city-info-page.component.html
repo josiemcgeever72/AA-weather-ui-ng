@@ -1,0 +1,25 @@
+<div class="form-group border">
+    <div class="form-group row" style="padding: 10px;">
+        <label class="col-sm-4 col-form-label">City</label>
+        <div class="col-sm-8">
+            <select class="form-control" #citiesDD (change)="onCityChanged(citiesDD.value)">
+                <option value="">Please Select</option>
+                <option *ngFor='let city of cityList'  [value]="city">{{city}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+<app-error-display [errors]="errors"></app-error-display>
+
+<div *ngIf="cityFound" class="form-group border">
+        <app-label-value-row labelValue='Weather:'      [dataValue]='getWeatherDisplayText()' imgUrl='//cdn.weatherapi.com/weather/64x64/day/116.png'></app-label-value-row>             
+        <app-label-value-row labelValue="Region:"       [dataValue]="cityInfo.location.region" ></app-label-value-row>  
+        <app-label-value-row labelValue="Country:"      [dataValue]="cityInfo.location.country" ></app-label-value-row>  
+        <app-label-value-row labelValue="Latitude:"     [dataValue]="cityInfo.location.latitude" ></app-label-value-row>  
+        <app-label-value-row labelValue="Longitude"     [dataValue]="cityInfo.location.longitude" ></app-label-value-row>  
+        <app-label-value-row labelValue="Date/Time:"    [dataValue]="cityInfo.location.localDateTime" ></app-label-value-row>  
+        <app-label-value-row labelValue="Sunrise:"      [dataValue]="cityInfo.astronomy.sunrise" ></app-label-value-row>  
+        <app-label-value-row labelValue="Sunset:"       [dataValue]="cityInfo.astronomy.sunset" ></app-label-value-row>  
+        <app-label-value-row labelValue="Moon phase:"   [dataValue]="cityInfo.astronomy.moonPhase" ></app-label-value-row> 
+</div>
+
